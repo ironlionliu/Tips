@@ -1,23 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>learn_Float</title>
-   <style type="text/css">
-   		.container{
+	<meta charset="UTF-8"/>
+    <title>learn_Float</title>
+    <style type="text/css">
+   		.container1{
 			width: 800px;
+			height:20px;
 			margin: auto;
-			background: #000;
+			background: black;
 			}
 		.floatdiv{
 			float:left;
+			background: rgba(255,255,255,0.5);
+			color: red;
 			}
-   </style>
+		.commondiv0{
+			background: rgba(0,0,0,1);
+			color:white;
+			}
+		.commondiv1{
+			background: rgba(0,0,0,0.5);
+			height: 80px;
+			width: 180px;
+			}
+		.commondiv2{
+			background: rgba(200,0,0,0.5);
+			height: 80px;
+			width: 180px;
+			}
+		.container2{
+			margin: auto;
+			width: 800px;
+			height: 100px;
+			background: rgba(200,0,0,0.3);
+			color: #0FC;
+			}
+		.container3{
+			margin: 50px auto;
+			width: 800px;
+			background: rgba(200,0,0,0.3);
+			}	
+		.floatimg{
+			float: left;
+			}
+    </style>
 </head>
 <body>
-	<div class="container">
+	<div class="container1">
     	<div class="floatdiv">
-        	float div
+        	浮动元素没有超出父div的左右限制，浮动元素没有超出父div的左右限制，浮动元素没有超出
+            div的左右限制，浮动元素没有超出父div的左右限制，浮动元素没有超出父div的左右限
         </div>
     </div>
+    <div class="container2">
+    	第二个div无视第一个div中的浮动元素,但文字会被挤下来
+    </div>
+    <div class="container3">
+    	<div>
+    		不浮动div
+        </div>
+        <div class="commondiv1">不被遮挡的div</div>
+        <div class="commondiv2">下一个div</div>
+    </div>
+    <div class="container3">
+    	<div class="floatdiv">
+    		浮动div
+        </div>
+        <div class="commondiv1">被遮挡的div</div>
+        <div class="commondiv2">下一个div</div>
+    </div>
+    <div class="container3">
+    	<div class="floatdiv">
+    		浮动div
+        </div>
+        <div class="commondiv1"><img src=""/></div>
+        <div class="commondiv2">下一个div</div>
+    </div>
+    <div class="container3">
+    	<div class="floatdiv">
+    		浮动div
+        </div>
+        <div class="commondiv0">div没有体积则横向填满，纵向撑开内容高度</div>
+        <div class="commondiv2">下一个div</div>
+    </div>
+    
 </body>
 </html>

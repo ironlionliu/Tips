@@ -1,0 +1,2 @@
+代码证明：
+将afeter、before视为普通的元素，在附着的真元素内部的开头和结尾处，同样视为可以是block、inline，没有content是语法错误的！
