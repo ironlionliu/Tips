@@ -44,6 +44,34 @@
 		.floatimg{
 			float: left;
 			}
+			
+		.transparentcontainer{
+			margin: 50px auto;
+			width: 800px;
+			background: rgba(200,0,0,0);
+			}	
+		.transparentcontainer:after{
+			content: "";
+			display: block;
+			clear: both;
+			}
+		.transparent1{
+			float: left;
+			background: rgba(0,0,0,0.1);
+			height:100px;
+			width: 300px;
+			}
+		.transparent2{
+			float: left;
+			background: rgba(0,0,0,0.2);
+			height:100px;
+			width: 300px;
+			}
+		.commondiv3{
+			background: rgba(200,0,0,0.5);
+			height: 20px;
+			width: 180px;
+			}
     </style>
 </head>
 <body>
@@ -83,6 +111,14 @@
         </div>
         <div class="commondiv0">div没有体积则横向填满，纵向撑开内容高度</div>
         <div class="commondiv2">下一个div</div>
+    </div>
+    
+    
+    <div class="transparentcontainer">
+    	<div class="transparent1">aaa</div>
+        <div class="transparent2">bbb</div>
+        <div style="background:rgba(0,102,255,0.3);">蓝色背景文字会被挤出来</div>
+        <div class="commondiv3">红色背景文字会被挤出来</div>
     </div>
     
 </body>
