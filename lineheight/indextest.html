@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>slide</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="reset.css"/>
+        <style type="text/css">
+			.slider{
+				margin: 50px auto;
+				position: relative;
+				width: 1200px;
+				height: 100px;
+				}
+			.slider .ctrl{
+				position: absolute;
+				width: 100%;
+				height: 4px;
+				text-align: center;
+				background: #999;
+				line-height: 10px;
+				}
+			.slider .ctrl .ctrl-i{
+				display: inline-block;
+				position: relative;
+				background: #00E;
+				height: 4px;
+				line-height: 10px;
+				width: 150px;
+				}
+			#optionBoard{
+				margin: 50px auto;
+				position: relative;
+				width: 1200px;
+				height: 200px;
+				font-size: 18px;
+				padding: 16px;
+				background: -moz-linear-gradient( top left,#cce,#F00,#0CF);
+				background: -webkit-linear-gradient(top left,#cce,#F00,#0CF);
+				background: -o-linear-gradient(top left,#ccce,#F00,#0CF);
+				}
+			#itemValue1,#itemValue2,#itemValue3{
+				display: inline-block;
+				}
+			#description1,#description2,#description3{
+				margin: 10px auto;
+				font-weight:bold;
+				}
+        </style>
+    </head>
+    <body>
+    <div class="slider">
+    	<div class="ctrl"><a class="ctrl-i"></a></div>
+    </div>
+    
+    <div id="optionBoard">
+    	<label>改变项目:fontSize</label>
+        <div id="itemValue1" id=></div>
+        <div id="description1"></div>
+        <label>改变项目:lineHeight</label>
+        <div id="itemValue2" id=></div>
+        <div id="description2"></div>
+        <label>改变项目:vertiacalAlign</label>
+        <div id="itemValue3" id=></div>
+        <div id="description3"></div>
+    </div>
+    </body>
+</html>
+
+
+<script type="text/javascript">
+	var itemValue1 = document.getElementById("itemValue1");
+	var itemValue2 = document.getElementById("itemValue2");
+	var itemValue3 = document.getElementById("itemValue3");
+	var changeItem = document.getElementById("changeItem");
+	var description1 = document.getElementById("description1");
+	var description2 = document.getElementById("description2");
+	var description3 = document.getElementById("description3");
+	var ctrl = document.getElementsByClassName("ctrl");
+	ctrl = ctrl[0];
+	renderFontsize();
+	renderlineHeight();
+	rendervertiacalAlign();
+	function renderFontsize(){
+		itemValue1.textContent = "";
+		var _node = document.createElement("select");
+		var _select = itemValue1.appendChild(_node);
+		_select.setAttribute("Id","renderFontSize");
+		var _node = document.createElement("option");
+		_node.textContent = "10px";
+		_node.setAttribute("value","10px");
+		_select.appendChild(_node);
+		var _node = document.createElement("option");
+		_node.textContent = "0px";
+		_node.setAttribute("value","0px");
+		_select.appendChild(_node);
+		var _node = document.createElement("option");
+		_node.textContent = "20px";
+		_node.setAttribute("value","20px");
+		_select.appendChild(_node);
+		handleFontSize("10px");
+		document.getElementById("renderFontSize").onchange = function(){
+			handleFontSize(this.value);
+			}
+		function handleFontSize(_fontsize){
+			ctrl.style.fontSize = _fontsize;
+			if(_fontsize == "10px"){
+				description1.textContent = "10px，基线以超出父节点，默认时诡异空白节点不为零";
+				}
+			else if(_fontsize == "0px"){
+				description1.textContent = "字体设为0，所有线（顶中基底合为一条）";
+				}
+			else if(_fontsize == "20px"){
+				description1.textContent = "20px，基线以超出父节点，默认时诡异空白节点不为零";
+				}
+			}
+		}
+	function renderlineHeight(){
+		itemValue2.textContent = "";
+		var _node = document.createElement("input");
+		var _select = itemValue2.appendChild(_node);
+		_select.setAttribute("Id","renderInput");
+		_select.value = 10;
+		handleLineHeight(10);
+		document.getElementById("renderInput").onchange = function(){
+			handleLineHeight(this.value);//onkeypress
+			}
+		document.getElementById("renderInput").onkeydown = function(e){
+			e=e||window.event; 
+			if(e.keyCode==13){
+				handleLineHeight(this.value);
+				}
+			}
+
+		function handleLineHeight(_lineHight){
+			ctrl.style.lineHeight = _lineHight + "px";
+			description2.textContent = "行高不影响字体高度，但会改变字体上下的留白，若行高小到一定程度，上下边距会成为负值，然而顶中基底没有坍缩，所以仍然无法对齐";
+			}
+		}
+	function rendervertiacalAlign(){
+		itemValue3.textContent = "";
+		var _node = document.createElement("select");
+		var _select = itemValue3.appendChild(_node);
+		_select.setAttribute("Id","renderVerticalAlign");
+		var _node = document.createElement("option");
+		_node.textContent = "baseline";
+		_node.setAttribute("value","baseline");
+		_select.appendChild(_node);
+		var _node = document.createElement("option");
+		_node.textContent = "bottom";
+		_node.setAttribute("value","bottom");
+		_select.appendChild(_node);
+		var _node = document.createElement("option");
+		_node.textContent = "top";
+		_node.setAttribute("value","top");
+		_select.appendChild(_node);
+		var _node = document.createElement("option");
+		_node.textContent = "text-top";
+		_node.setAttribute("value","text-top");
+		_select.appendChild(_node);
+		var _node = document.createElement("option");
+		_node.textContent = "text-bottom";
+		_node.setAttribute("value","text-bottom");
+		_select.appendChild(_node);
+		
+		handleVerticalAlign("baseline");
+		document.getElementById("renderVerticalAlign").onchange = function(){
+			handleVerticalAlign(this.value);
+			}
+		function handleVerticalAlign(_verticalAlign){
+			var ctrl_i = document.getElementsByClassName("ctrl-i");
+			ctrl_i = ctrl_i[0];
+			ctrl_i.style.verticalAlign = _verticalAlign;
+			description3.textContent = "对齐方式不同使得子元素在父元素的最顶、顶中基底、最低之间变化";
+			}
+		
+		
+		}
+</script>
